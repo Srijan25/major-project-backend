@@ -1,7 +1,9 @@
 package com.learn.portal.controllers;
 
 import com.learn.portal.dto.UserDto;
+import com.learn.portal.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,14 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/signup")
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
         userDto.setRole("USER");
-//        UserDto createdUser = this.userService.createUser(userDto);
+        ResponseEntity<String> createdUser = this.userService.createUser(userDto);
+        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
+    }
 
-//        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
-        return new ResponseEntity("ok", HttpStatus.OK);
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody UserDto userDto) {
+        return this.userService.loginUser(userDto);
     }
 
 }
