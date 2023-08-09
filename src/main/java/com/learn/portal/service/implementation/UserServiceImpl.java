@@ -2,6 +2,7 @@ package com.learn.portal.service.implementation;
 
 import com.learn.portal.dto.UserDto;
 import com.learn.portal.entites.User;
+import com.learn.portal.exception.EmailIdAlreadyExistsException;
 import com.learn.portal.jwt.JwtTokenProvider;
 import com.learn.portal.repository.UserRepository;
 import com.learn.portal.service.UserService;
@@ -13,7 +14,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,18 +31,18 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public ResponseEntity<String> createUser(UserDto userDto) {
+    public UserDto createUser(UserDto userDto) {
         if(this.userRepository.findByEmailId(userDto.getEmailId()).isPresent()) {
-            return ResponseEntity.badRequest().body("Email Id already exists");
+            throw new EmailIdAlreadyExistsException("Email Id already exists");
         }
         User user = this.dtoToUser(userDto);
         user.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
         User savedUser = this.userRepository.save(user);
-        return ResponseEntity.ok("User created successfully");
+        return this.userToDto(savedUser);
     }
 
     @Override
-    public ResponseEntity<?> loginUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<?> loginUser(UserDto userDto) {
         try {
             var authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(userDto.getEmailId(), userDto.getPassword()));
@@ -80,4 +80,5 @@ public class UserServiceImpl implements UserService {
         .orElseThrow(() -> new RuntimeException("User not found with email id: " + emailId));
         return this.userToDto(user);
     }
+
 }

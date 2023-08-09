@@ -20,8 +20,9 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
         userDto.setRole("USER");
-        ResponseEntity<String> createdUser = this.userService.createUser(userDto);
-        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
+        UserDto createdUser = this.userService.createUser(userDto);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+
     }
 
     @PostMapping("/login")
