@@ -54,8 +54,8 @@ public class UserServiceImpl implements UserService {
             response.put("name", user.getName());
             response.put("token", token);
             response.put("role", user.getRole());
+            return ResponseEntity.ok(response);
 
-            return ResponseEntity.ok(response.toString());
 
         } catch (AuthenticationException e) {
             return ResponseEntity.badRequest().body("Invalid username/password supplied");
