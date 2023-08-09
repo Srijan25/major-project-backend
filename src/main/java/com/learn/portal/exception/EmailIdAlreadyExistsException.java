@@ -1,8 +1,8 @@
 package com.learn.portal.exception;
 
-public class EmailIdAlreadyExistsException extends Throwable {
+public class EmailIdAlreadyExistsException extends RuntimeException {
 
-    public EmailIdAlreadyExistsException(String message) {
-        super(message);
+    public EmailIdAlreadyExistsException() {
+        super(String.format("Email already exists!"));
     }
 }

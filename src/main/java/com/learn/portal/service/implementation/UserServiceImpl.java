@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto createUser(UserDto userDto) {
         if(this.userRepository.findByEmailId(userDto.getEmailId()).isPresent()) {
-            throw new EmailIdAlreadyExistsException("Email Id already exists");
+            throw new EmailIdAlreadyExistsException();
         }
         User user = this.dtoToUser(userDto);
         user.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
