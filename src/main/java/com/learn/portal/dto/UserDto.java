@@ -20,7 +20,6 @@ public class UserDto {
     @Pattern(regexp = "^[a-zA-Z ]*", message = "Incorrect format for Name!")
     private String name;
 
-
     @Pattern(regexp = "^(9|8|7|6)[0-9]*$", message = "Incorrect Number!")
     private String mobileNumber;
 
