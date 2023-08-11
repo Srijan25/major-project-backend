@@ -18,6 +18,11 @@ public class Subject {
     @ManyToOne
     @JoinColumn(name = "semester_id")
     private Semester semester;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+    @OneToMany(mappedBy = "subject")
+    private java.util.List<Unit> units;
 
 
 }

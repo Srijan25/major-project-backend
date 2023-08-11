@@ -20,7 +20,6 @@ public class Student {
         private String studentName;
 
 
-
         @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "semesterId")
         private Semester semester;
