@@ -15,7 +15,7 @@ public class Teacher {
     private int teacherId;
     private String teacherName;
     private String teacherMobileNumber;
-    private Boolean status = false;
+
 
     @OneToOne
     @JoinColumn(name = "deptId")

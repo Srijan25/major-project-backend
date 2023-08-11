@@ -21,15 +21,13 @@ public class Student {
         @JoinColumn(name = "semesterId")
         private Semester semester;
 
-        @OneToOne
-        @JoinColumn(name = "deptId")
-        private Dept dept;
+
 
         private String studentName;
 
         private String studentMobileNumber;
 
-        private Boolean status = false;
+        private Boolean status;
 
         @OneToOne
         @JoinColumn(name = "userId")

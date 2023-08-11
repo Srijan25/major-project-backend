@@ -19,4 +19,5 @@ public class Subject {
     @JoinColumn(name = "semester_id")
     private Semester semester;
 
+
 }

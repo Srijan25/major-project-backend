@@ -14,4 +14,10 @@ public class Dept {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int deptId;
     private String deptName;
+    @OneToMany(mappedBy = "dept")
+    private java.util.List<Teacher> teachers;
+    @OneToOne(mappedBy = "dept")
+    private Hod hod;
+    @OneToMany(mappedBy = "dept")
+    private java.util.List<Semester> semesters;
 }

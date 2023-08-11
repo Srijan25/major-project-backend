@@ -16,7 +16,7 @@ public class Semester {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int semesterId;
     private int semesterNumber;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "deptId")
     private Dept dept;
     @OneToMany(mappedBy = "semester")
