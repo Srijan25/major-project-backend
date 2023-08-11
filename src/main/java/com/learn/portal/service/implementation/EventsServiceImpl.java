@@ -53,4 +53,16 @@ public class EventsServiceImpl implements EventsService {
         eventsRepository.delete(events);
         return "Events Deleted";
     }
+
+    @Override
+    public EventsDto getEventsById(int eventsId) {
+        Events events = this.eventsRepository.findById(eventsId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid events Id:" + eventsId));
+        EventsDto eventsDto = new EventsDto();
+        eventsDto.setEventsTitle(events.getEventsTitle());
+        eventsDto.setEventsDescription(events.getEventsDescription());
+        eventsDto.setEventsDate(events.getEventsDate());
+        eventsDto.setEventsPhoto(events.getEventsPhoto());
+        return eventsDto;
+    }
 }

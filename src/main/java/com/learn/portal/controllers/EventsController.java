@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/events")
@@ -28,11 +29,18 @@ public class EventsController {
         return new ResponseEntity<>(createdEvents, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{eventsId}")
-    public ResponseEntity<EventsDto> updateEvents(@PathVariable int eventsId, @Valid @RequestBody EventsDto eventsDto) {
-        EventsDto updatedEvents = this.eventsService.updateEvents(eventsId, eventsDto);
-        return new ResponseEntity<>(updatedEvents, HttpStatus.OK);
+    @PostMapping("/uploadpic/{eventsId}")
+    public ResponseEntity<EventsDto> uploadPic(@PathVariable int eventsId, @Valid @RequestBody EventsDto eventsDto) {
+        EventsDto createdEvents = this.eventsService.uploadPic(eventsId, eventsDto);
+        return new ResponseEntity<>(createdEvents, HttpStatus.CREATED);
     }
+
+    @PutMapping("/update/{eventsId}")
+    public ResponseEntity<EventsDto> updateEvents(@PathVariable int eventsId, @RequestParam("image") MultipartFile image, @Valid @RequestBody EventsDto eventsDto) {
+        EventsDto eventsDto =this.eventsService
+    }
+
+
 
     @DeleteMapping("/delete/{eventsId}")
     public ResponseEntity<String> deleteEvents(@PathVariable int eventsId) {
