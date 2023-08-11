@@ -11,12 +11,13 @@ import java.util.Date;
 //@NoArgsConstructor
 @Getter
 @Setter
-public class News {
+public class Events {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int newsId;
-    private String newsTitle;
-    private String newsDescription;
-    private Date newsDate;
+    private int eventsId;
+    private String eventsTitle;
+    private String eventsDescription;
+    private Date eventsDate;
+    private String eventsPhoto;
 
 }
