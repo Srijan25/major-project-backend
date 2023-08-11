@@ -17,17 +17,17 @@ public class Student {
 
         private int sid;
 
-        @OneToOne
-        @JoinColumn(name = "semesterId")
-        private Semester semester;
-
-
-
         private String studentName;
 
         private String studentMobileNumber;
 
         private Boolean status;
+
+
+        @OneToOne
+        @JoinColumn(name = "semesterId")
+        private Semester semester;
+
 
         @OneToOne
         @JoinColumn(name = "userId")
