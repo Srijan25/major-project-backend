@@ -23,4 +23,5 @@ public class Semester {
     private List<Subject> subjects;
     @OneToMany(mappedBy = "semester")
     private List<Student> students;
+
 }

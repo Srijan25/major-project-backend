@@ -16,10 +16,6 @@ public class Hod {
 
     private String Name;
 
-    private String mobileNumber;
-
-    private String emailId;
-
     @OneToOne
     @JoinColumn(name = "deptId")
     private Dept dept;

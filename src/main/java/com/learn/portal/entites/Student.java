@@ -19,15 +19,12 @@ public class Student {
 
         private String studentName;
 
-        private String studentMobileNumber;
 
         private Boolean status;
 
-
-        @OneToOne
+        @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "semesterId")
         private Semester semester;
-
 
         @OneToOne
         @JoinColumn(name = "userId")
