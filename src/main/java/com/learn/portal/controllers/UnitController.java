@@ -36,7 +36,7 @@ public class UnitController {
 	
 	@GetMapping("/unitsBySubject/{subjectId}")
 	public ResponseEntity<List<UnitDto>> viewUnitsBySubject(@PathVariable Integer subjectId){
-		List<UnitDto> unitDtos = this.unitService.viewAllUnits();
+		List<UnitDto> unitDtos = this.unitService.viewUnitsBySubject(subjectId);
 		return new ResponseEntity<List<UnitDto>>(unitDtos, HttpStatus.OK);
 	}
 }

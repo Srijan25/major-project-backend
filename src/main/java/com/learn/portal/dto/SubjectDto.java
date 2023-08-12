@@ -14,6 +14,6 @@ public class SubjectDto {
 	private int subjectId;
 	private String subjectName;
 	private String subjectCode;
-	private List<Unit> units;
+	//private List<UnitDto> units;
 	private TeacherDto teacher;
 }
