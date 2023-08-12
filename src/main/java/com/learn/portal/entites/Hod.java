@@ -14,17 +14,11 @@ public class Hod {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hodId;
 
-    private String Name;
+    @Column(name = "hod_name", nullable = false, length = 50)
+    private String hodName;
 
     @OneToOne
     @JoinColumn(name = "deptId")
     private Dept dept;
-
-    @OneToOne
-    @JoinColumn(name = "userId")
-    private User user;
-
-
-
 
 }

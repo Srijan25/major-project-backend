@@ -6,7 +6,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "students")
-//@NoArgsConstructor
 @Getter
 @Setter
 public class Student {
@@ -15,17 +14,16 @@ public class Student {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int studentId;
 
-        private int sid;
+        @Column(name = "student_roll", nullable = false, length = 50)
+        private int studentRoll;
 
+        @Column(name = "student_name", nullable = false, length = 50)
         private String studentName;
 
+        @Column(name = "semester", nullable = false, length = 10)
+        private int semester;
 
-        @ManyToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "semesterId")
-        private Semester semester;
-
-        @OneToOne
-        @JoinColumn(name = "userId")
-        private User user;
-
+        @ManyToOne
+        @JoinColumn(name = "dept_id")
+        private Dept dept;
 }

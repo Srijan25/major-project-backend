@@ -2,9 +2,7 @@ package com.learn.portal.entites;
 
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -42,10 +40,7 @@ public class User implements UserDetails {
     @Column(name = "user_role", nullable = false, length = 10)
     private String role;
 
-    @Column(name="status")
-    private Boolean status = false;
-
-
+ 
 
 
     @Override
