@@ -9,7 +9,9 @@ import com.learn.portal.entites.Unit;
 import com.learn.portal.repository.SubjectRepository;
 import com.learn.portal.repository.UnitRepository;
 import com.learn.portal.service.UnitService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UnitServiceImpl implements UnitService {
 
 	@Autowired
@@ -24,10 +26,10 @@ public class UnitServiceImpl implements UnitService {
 	@Override
 	public UnitDto createUnit(UnitDto unitDto) {
 		Unit unit = this.modelMapper.map(unitDto, Unit.class);
-		Subject subject=this.subjectRepository.findById(unit.getSubject().getSubjectId()).orElseThrow();
+		Subject subject = this.subjectRepository.findById(subjectRepository.findAll().get(0).getSubjectId()).get();
 		unit.setSubject(subject);
-		Unit addedUnit = this.unitRepository.save(unit);
-		return this.modelMapper.map(addedUnit, UnitDto.class);
+		this.unitRepository.save(unit);
+		return unitDto;
 	}
 
 }
