@@ -19,6 +19,9 @@ public class Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int unitId;
+
+    @Column(name = "unit_number", nullable = false, length = 50)
+    private int unitNumber;
     
     @Column(name = "unit_name", nullable = false, length = 50)
     private String unitName;

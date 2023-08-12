@@ -1,5 +1,10 @@
 package com.learn.portal.service.implementation;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,6 +35,26 @@ public class UnitServiceImpl implements UnitService {
 		unit.setSubject(subject);
 		this.unitRepository.save(unit);
 		return unitDto;
+	}
+
+	@Override
+	public List<UnitDto> viewAllUnits() {
+		List<Unit> units = this.unitRepository.findAll();
+		List<UnitDto> unitDtos = units.stream()
+				.map((unit)->this.modelMapper.map(unit, UnitDto.class))
+				.collect(Collectors.toList());
+		return unitDtos;
+	}
+
+	@Override
+	public List<UnitDto> viewUnitsBySubject(int subjectId) {
+		Subject subject = this.subjectRepository.findById(subjectId).orElseThrow();
+		List<Unit> units = this.unitRepository.findBySubject(subject);
+		List<UnitDto> unitDtos = units.stream()
+				.map((unit)->this.modelMapper.map(unit, UnitDto.class))
+				.sorted(Comparator.comparing(UnitDto::getUnitNumber))
+				.collect(Collectors.toList());
+		return unitDtos;
 	}
 
 }
