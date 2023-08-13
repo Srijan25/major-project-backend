@@ -53,6 +53,8 @@ public class User implements UserDetails {
     @JoinColumn(name = "dept_id")
     private Dept dept;
 
+    @Column(name = "user_image", length = 50)
+    private String userImage;
 
 
     @Override

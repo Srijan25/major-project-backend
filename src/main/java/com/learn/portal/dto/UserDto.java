@@ -35,5 +35,6 @@ public class UserDto {
     private int semester;
     private List<SubjectDto> subjects;
     private DeptDto dept;
+    private String userImage;
     
 }
