@@ -12,6 +12,9 @@ import com.learn.portal.entites.Subject;
 import com.learn.portal.repository.DeptRepository;
 import com.learn.portal.repository.SubjectRepository;
 import com.learn.portal.service.SubjectService;
+import org.springframework.stereotype.Service;
+
+@Service
 
 public class SubjectServiceImpl implements SubjectService{
 
