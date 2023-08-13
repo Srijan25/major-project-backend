@@ -3,9 +3,7 @@ package com.learn.portal.service.implementation;
 import com.learn.portal.dto.DeptDto;
 import com.learn.portal.dto.TeacherDto;
 import com.learn.portal.dto.UserDto;
-import com.learn.portal.entites.Dept;
-import com.learn.portal.entites.Subject;
-import com.learn.portal.entites.User;
+import com.learn.portal.entites.*;
 import com.learn.portal.repository.DeptRepository;
 import com.learn.portal.repository.TeacherRepository;
 import com.learn.portal.repository.UserRepository;
@@ -23,23 +21,14 @@ public class TeacherServiceImpl implements TeacherService {
     private DeptRepository deptRepository;
     @Override
     public TeacherDto createTeacher(TeacherDto teacherDto, Integer deptId, Integer userId) {
-        TeacherDto teacherDto1 = new TeacherDto();
-        teacherDto1.setTeacherName(teacherDto.getTeacherName());
+        Teacher teacher = new Teacher();
+        teacher.setTeacherName(teacherDto.getTeacherName());
         Dept dept = this.deptRepository.findById(deptId).orElseThrow();
-        teacherDto1.setDept(dept);
+        teacher.setDept(dept);
         User user = this.userRepository.findById(userId).orElseThrow();
-        teacherDto1.setUser(user);
-        teacherRepository.save(teacherDto1);
-        return teacherDto1;
-
-
-
-
-
-
-
-
-
+        teacher.setUser(user);
+        teacherRepository.save(teacher);
+        return teacherDto;
 
     }
 
