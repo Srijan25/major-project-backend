@@ -11,5 +11,5 @@ public class StudentDto {
     private int studentRoll;
 
     private int semester;
-    private DeptDto dept;
+//    private DeptDto dept;
 }
