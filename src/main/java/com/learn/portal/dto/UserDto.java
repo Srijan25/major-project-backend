@@ -30,6 +30,6 @@ public class UserDto {
    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+=\\-{}|:\"<>?/.,';\\[\\]])[A-Za-z\\d!@#$%^&*()_+=\\-{}|:\"<>?/.,';\\[\\]]+$", message = "Password should contain at least one upper-case letter, lower-case letter, a digit and a special character")
     private String password;
     private String role;
-    private Boolean status = false;
+
 
 }

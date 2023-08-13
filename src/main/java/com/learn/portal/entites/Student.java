@@ -23,6 +23,10 @@ public class Student {
         @Column(name = "semester", nullable = false, length = 10)
         private int semester;
 
+        @OneToOne
+        @JoinColumn(name = "user_id")
+        private User user;
+
         @ManyToOne
         @JoinColumn(name = "dept_id")
         private Dept dept;

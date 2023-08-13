@@ -24,5 +24,9 @@ public class Teacher {
 
     @OneToMany(mappedBy = "teacher")
     private List<Subject> subjects;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     
 }

@@ -21,4 +21,8 @@ public class Hod {
     @JoinColumn(name = "deptId")
     private Dept dept;
 
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private User user;
+
 }
