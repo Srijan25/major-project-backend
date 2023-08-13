@@ -17,8 +17,7 @@ public class Student {
         @Column(name = "student_roll", nullable = false, length = 50)
         private int studentRoll;
 
-        @Column(name = "student_name", nullable = false, length = 50)
-        private String studentName;
+
 
         @Column(name = "semester", nullable = false, length = 10)
         private int semester;

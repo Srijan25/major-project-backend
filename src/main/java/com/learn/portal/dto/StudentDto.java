@@ -9,7 +9,7 @@ public class StudentDto {
 
     private int studentId;
     private int studentRoll;
-    private String studentName;
+
     private int semester;
     private DeptDto dept;
 }

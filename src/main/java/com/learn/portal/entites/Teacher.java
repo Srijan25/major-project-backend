@@ -15,8 +15,7 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int teacherId;
     
-    @Column(name = "teacher_name", nullable = false, length = 50)
-    private String teacherName;
+
 
     @ManyToOne
     @JoinColumn(name = "dept_id")
