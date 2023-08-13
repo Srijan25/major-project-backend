@@ -1,5 +1,8 @@
 package com.learn.portal.entites;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +31,9 @@ public class Unit {
     
     @Column(name = "unit_desc", nullable = false, length = 500)
     private String unitDesc;
+    
+    @Column(name = "unit_notes")
+    private List<String> notes = new ArrayList<>();
     
     @ManyToOne
     @JoinColumn(name = "subject_id")

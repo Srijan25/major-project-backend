@@ -36,6 +36,7 @@ public class UnitServiceImpl implements UnitService {
 		Unit savedUnit = this.unitRepository.save(unit);
 		return this.modelMapper.map(savedUnit, UnitDto.class);
 	}
+	
 
 	@Override
 	public List<UnitDto> viewAllUnits() {
@@ -55,6 +56,24 @@ public class UnitServiceImpl implements UnitService {
 				.sorted(Comparator.comparing(UnitDto::getUnitNumber))
 				.collect(Collectors.toList());
 		return unitDtos;
+	}
+
+
+	@Override
+	public UnitDto getUnitById(Integer unitId) {
+		Unit unit = this.unitRepository.findById(unitId).orElseThrow();
+		return this.modelMapper.map(unit, UnitDto.class);
+	}
+
+
+	@Override
+	public UnitDto updateUnit(UnitDto unitDto, Integer unitId) {
+		Unit unit = this.unitRepository.findById(unitId).orElseThrow();
+		
+		unit.setNotes(unitDto.getNotes());
+		
+		Unit savedUnit = this.unitRepository.save(unit);
+		return this.modelMapper.map(savedUnit, UnitDto.class);
 	}
 
 }

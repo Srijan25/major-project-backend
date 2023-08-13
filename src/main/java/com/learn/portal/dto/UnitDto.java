@@ -1,5 +1,7 @@
 package com.learn.portal.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +13,7 @@ public class UnitDto {
 	private int unitNumber;
 	private String unitName;
 	private String unitDesc;
-	//private SubjectDto subject;
+	private List<String> notes;
+	// private SubjectDto subject;
 
 }
