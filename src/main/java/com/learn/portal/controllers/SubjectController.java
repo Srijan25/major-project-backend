@@ -3,10 +3,7 @@ package com.learn.portal.controllers;
 import com.learn.portal.dto.SubjectDto;
 import com.learn.portal.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,7 +26,7 @@ public class SubjectController {
     }
 
     @GetMapping("/view/{semesterId}/{deptId}")
-    public List<SubjectDto> viewSubjectsByDeptAndSem(Integer semesterId, Integer deptId){
+    public List<SubjectDto> viewSubjectsByDeptAndSem(@PathVariable Integer semesterId, @PathVariable Integer deptId){
         return this.subjectService.viewSubjectsByDeptAndSem(semesterId, deptId);
     }
 
