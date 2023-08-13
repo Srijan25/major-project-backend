@@ -46,8 +46,8 @@ public class User implements UserDetails {
     @Column(name = "semester", nullable = true, length = 10)
     private int semester;
     
-    @OneToMany(mappedBy = "teacher")
-    private List<Subject> subjects;
+    //@OneToMany(mappedBy = "teacher")
+    //private List<Subject> subjects;
 
     @ManyToOne
     @JoinColumn(name = "dept_id")

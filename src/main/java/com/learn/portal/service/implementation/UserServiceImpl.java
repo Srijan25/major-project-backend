@@ -32,6 +32,9 @@ public class UserServiceImpl implements UserService {
 	private JwtTokenProvider jwtTokenProvider;
 
 	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
 	private FileService fileService;
 
 	@Override
@@ -39,10 +42,10 @@ public class UserServiceImpl implements UserService {
 		if (this.userRepository.findByEmailId(userDto.getEmailId()).isPresent()) {
 			throw new EmailIdAlreadyExistsException();
 		}
-		User user = this.dtoToUser(userDto);
+		User user = this.modelMapper.map(userDto, User.class);
 		user.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
 		User savedUser = this.userRepository.save(user);
-		return this.userToDto(savedUser);
+		return this.modelMapper.map(savedUser, UserDto.class);
 	}
 	@Override
 	public UserDto updateUser(UserDto userDto, Integer userId) {
@@ -56,14 +59,14 @@ public class UserServiceImpl implements UserService {
 
 		User updatedUser = this.userRepository.save(user);
 
-		return this.userToDto(updatedUser);
+		return this.modelMapper.map(updatedUser, UserDto.class);
 	}
 
 	@Override
 	public UserDto getUserById(Integer userId) {
 		User user = this.userRepository.findById(userId).orElseThrow();
 
-		return this.userToDto(user);
+		return this.modelMapper.map(user, UserDto.class);
 	}
 
 	@Override
@@ -86,25 +89,10 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	private User dtoToUser(UserDto userDto) {
-		User user = new User();
-		user.setName(userDto.getName());
-		user.setEmailId(userDto.getEmailId());
-		user.setMobileNumber(userDto.getMobileNumber());
-		user.setRole(userDto.getRole());
-		return user;
-	}
-
-	private UserDto userToDto(User user) {
-		ModelMapper mapper = new ModelMapper();
-		UserDto userDto = mapper.map(user, UserDto.class);
-		return userDto;
-	}
-
 	private UserDto getUserByEmail(String emailId) {
 		User user = this.userRepository.findByEmailId(emailId)
 				.orElseThrow(() -> new RuntimeException("User not found with email id: " + emailId));
-		return this.userToDto(user);
+		return this.modelMapper.map(user, UserDto.class);
 	}
 
 }
