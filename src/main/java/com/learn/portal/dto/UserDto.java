@@ -1,10 +1,11 @@
 package com.learn.portal.dto;
 
 
+import java.util.List;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,9 +28,12 @@ public class UserDto {
     @Email(message = "Kindly enter correct email id!")
     private String emailId;
 
-   @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+=\\-{}|:\"<>?/.,';\\[\\]])[A-Za-z\\d!@#$%^&*()_+=\\-{}|:\"<>?/.,';\\[\\]]+$", message = "Password should contain at least one upper-case letter, lower-case letter, a digit and a special character")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+=\\-{}|:\"<>?/.,';\\[\\]])[A-Za-z\\d!@#$%^&*()_+=\\-{}|:\"<>?/.,';\\[\\]]+$", message = "Password should contain at least one upper-case letter, lower-case letter, a digit and a special character")
     private String password;
     private String role;
-
-
+    private int studentRoll;
+    private int semester;
+    private List<SubjectDto> subjects;
+    private DeptDto dept;
+    
 }

@@ -28,19 +28,31 @@ public class User implements UserDetails {
     @Column(name = "user_name", nullable = false, length = 50)
     private String name;
 
-    @Column(name = "user_mobileNumber", nullable = true, length = 10)
+    @Column(name = "user_mobileNumber", nullable = false, length = 10)
     private String mobileNumber;
 
     @Column(name = "user_emailId", nullable = false, length = 50)
     private String emailId;
 
-    @Column(name = "user_password", nullable = true, length = 1000)
+    @Column(name = "user_password", nullable = false, length = 1000)
     private String password;
 
     @Column(name = "user_role", nullable = false, length = 10)
     private String role;
 
- 
+    @Column(name = "student_roll", nullable = true, length = 50)
+    private int studentRoll;
+
+    @Column(name = "semester", nullable = true, length = 10)
+    private int semester;
+    
+    @OneToMany(mappedBy = "teacher")
+    private List<Subject> subjects;
+
+    @ManyToOne
+    @JoinColumn(name = "dept_id")
+    private Dept dept;
+
 
 
     @Override

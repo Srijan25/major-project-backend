@@ -9,5 +9,5 @@ public class HodDto {
 
 	private int hodId;
 	private String hodName;
-	private DeptDto dept;
+	//private DeptDto dept;
 }
