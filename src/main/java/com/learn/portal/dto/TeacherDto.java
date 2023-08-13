@@ -12,5 +12,6 @@ public class TeacherDto {
 	private int teacherId;
 	private String teacherName;
 	private DeptDto dept;
+	private UserDto user;
 	private List<SubjectDto> subjects;
 }
