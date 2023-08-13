@@ -11,6 +11,6 @@ public class UnitDto {
 	private int unitNumber;
 	private String unitName;
 	private String unitDesc;
-	private SubjectDto subject;
+	//private SubjectDto subject;
 
 }

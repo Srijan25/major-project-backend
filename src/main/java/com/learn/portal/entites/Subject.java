@@ -34,7 +34,12 @@ public class Subject {
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Unit> units;
 
+    @Column(name = "semester", nullable = false, length = 50)
+    private Integer semester;
     
+    @ManyToOne
+    @JoinColumn(name = "dept_id")
+    private Dept dept;
     
     @ManyToOne
     @JoinColumn(name = "teacher_id")

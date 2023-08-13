@@ -6,7 +6,7 @@ import com.learn.portal.dto.UnitDto;
 
 public interface UnitService {
 
-	UnitDto createUnit(UnitDto unitDto);
+	UnitDto createUnit(UnitDto unitDto, Integer subjectId);
 	
 	List<UnitDto> viewAllUnits();
 	

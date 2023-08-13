@@ -29,12 +29,12 @@ public class UnitServiceImpl implements UnitService {
 	private ModelMapper modelMapper;
 	
 	@Override
-	public UnitDto createUnit(UnitDto unitDto) {
+	public UnitDto createUnit(UnitDto unitDto, Integer subjectId) {
 		Unit unit = this.modelMapper.map(unitDto, Unit.class);
-		Subject subject = this.subjectRepository.findById(subjectRepository.findAll().get(0).getSubjectId()).get();
+		Subject subject = this.subjectRepository.findById(subjectId).orElseThrow();
 		unit.setSubject(subject);
-		this.unitRepository.save(unit);
-		return unitDto;
+		Unit savedUnit = this.unitRepository.save(unit);
+		return this.modelMapper.map(savedUnit, UnitDto.class);
 	}
 
 	@Override

@@ -2,8 +2,10 @@ package com.learn.portal.dto;
 
 import java.util.List;
 
-import com.learn.portal.entites.Unit;
+import com.learn.portal.entites.Dept;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +16,8 @@ public class SubjectDto {
 	private int subjectId;
 	private String subjectName;
 	private String subjectCode;
-//	private List<UnitDto> units;
+	private List<UnitDto> units;
+	private Integer semester;
+//	private DeptDto dept;
 //	private TeacherDto teacher;
 }

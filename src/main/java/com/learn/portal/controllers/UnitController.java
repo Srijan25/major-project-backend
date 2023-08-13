@@ -22,9 +22,9 @@ public class UnitController {
 	@Autowired
 	private UnitService unitService;
 	
-	@PostMapping("/")
-	public ResponseEntity<UnitDto> createUnit(@RequestBody UnitDto unitDto){
-		UnitDto createdUnit = this.unitService.createUnit(unitDto);
+	@PostMapping("/{subjectId}")
+	public ResponseEntity<UnitDto> createUnit(@RequestBody UnitDto unitDto, @PathVariable Integer subjectId){
+		UnitDto createdUnit = this.unitService.createUnit(unitDto, subjectId);
 		return new ResponseEntity<UnitDto>(createdUnit, HttpStatus.CREATED);	
 	}
 	
