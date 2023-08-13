@@ -13,7 +13,7 @@ public class TeacherDto {
 
 	private int teacherId;
 	private String teacherName;
-	private Dept dept;
-	private User user;
-	private List<SubjectDto> subjects;
+//	private Dept dept;
+//	private User user;
+//	private List<SubjectDto> subjects;
 }
