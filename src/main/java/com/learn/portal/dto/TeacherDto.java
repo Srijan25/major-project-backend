@@ -11,9 +11,8 @@ import lombok.Setter;
 @Setter
 public class TeacherDto {
 
-	private int teacherId;
+
 	private String teacherName;
-	private Dept dept;
-	private User user;
-	private List<SubjectDto> subjects;
+	private Integer deptId;
+	private Integer userId;
 }
