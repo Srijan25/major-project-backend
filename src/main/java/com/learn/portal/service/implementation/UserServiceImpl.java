@@ -82,6 +82,8 @@ public class UserServiceImpl implements UserService {
 			response.put("name", user.getName());
 			response.put("token", token);
 			response.put("role", user.getRole());
+			response.put("semester", user.getSemester());
+			response.put("dept", user.getDept());
 			return ResponseEntity.ok(response);
 
 		} catch (AuthenticationException e) {

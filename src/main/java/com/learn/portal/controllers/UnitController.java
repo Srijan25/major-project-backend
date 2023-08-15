@@ -53,6 +53,12 @@ public class UnitController {
 		List<UnitDto> unitDtos = this.unitService.viewUnitsBySubject(subjectId);
 		return new ResponseEntity<List<UnitDto>>(unitDtos, HttpStatus.OK);
 	}
+
+	@GetMapping("/{unitId}")
+	public ResponseEntity<UnitDto> getUnitById(@PathVariable Integer unitId){
+		UnitDto unitDto = this.unitService.getUnitById(unitId);
+		return new ResponseEntity<UnitDto>(unitDto, HttpStatus.OK);
+	}
 	
 	@PostMapping("/notes_upload/{unitId}")
 	public ResponseEntity<UnitDto> uploadNotes(@RequestParam("note") MultipartFile note,
