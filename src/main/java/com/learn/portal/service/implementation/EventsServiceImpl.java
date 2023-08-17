@@ -19,7 +19,7 @@ public class EventsServiceImpl implements EventsService {
         events.setEventsTitle(eventsDto.getEventsTitle());
         events.setEventsDescription(eventsDto.getEventsDescription());
         events.setEventsDate(eventsDto.getEventsDate());
-        events.setEventsPhoto(eventsDto.getEventsPhoto());
+        events.setEventImage(eventsDto.getEventImage());
         eventsRepository.save(events);
         return eventsDto;
 
@@ -32,7 +32,7 @@ public class EventsServiceImpl implements EventsService {
         eventsDto.setEventsTitle(events.getEventsTitle());
         eventsDto.setEventsDescription(events.getEventsDescription());
         eventsDto.setEventsDate(events.getEventsDate());
-        eventsDto.setEventsPhoto(events.getEventsPhoto());
+        eventsDto.setEventImage(events.getEventImage());
         return eventsDto;
     }
 
@@ -42,7 +42,7 @@ public class EventsServiceImpl implements EventsService {
         events.setEventsTitle(eventsDto.getEventsTitle());
         events.setEventsDescription(eventsDto.getEventsDescription());
         events.setEventsDate(eventsDto.getEventsDate());
-        events.setEventsPhoto(eventsDto.getEventsPhoto());
+        events.setEventImage(eventsDto.getEventImage());
         eventsRepository.save(events);
         return eventsDto;
     }
@@ -62,7 +62,7 @@ public class EventsServiceImpl implements EventsService {
         eventsDto.setEventsTitle(events.getEventsTitle());
         eventsDto.setEventsDescription(events.getEventsDescription());
         eventsDto.setEventsDate(events.getEventsDate());
-        eventsDto.setEventsPhoto(events.getEventsPhoto());
+        eventsDto.setEventImage(events.getEventImage());
         return eventsDto;
     }
 }

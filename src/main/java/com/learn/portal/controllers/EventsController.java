@@ -1,12 +1,21 @@
 package com.learn.portal.controllers;
 
 import com.learn.portal.dto.EventsDto;
+import com.learn.portal.dto.UserDto;
 import com.learn.portal.service.EventsService;
+import com.learn.portal.service.FileService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 @RestController
 @RequestMapping("/api/events")
@@ -14,6 +23,9 @@ public class EventsController {
 
     @Autowired
     private EventsService eventsService;
+
+    @Autowired
+    private FileService fileService;
 
     @GetMapping("/events")
     public ResponseEntity<EventsDto> getEvents() {
@@ -41,4 +53,30 @@ public class EventsController {
         String message = this.eventsService.deleteEvents(eventsId);
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
+
+    @PostMapping("/event/img_upload/{eventId}")
+    public ResponseEntity<EventsDto> uploadProductImage(@RequestParam("image") MultipartFile image,
+                                                      @PathVariable Integer eventId) throws IOException {
+
+        EventsDto eventsDto = this.eventsService.getEventsById(eventId);
+
+        String fileName = this.fileService.uploadImage(image);
+
+        eventsDto.setEventImage(fileName);
+        EventsDto updatedEvent = this.eventsService.updateEvents(eventId, eventsDto);
+        return new ResponseEntity<EventsDto>(updatedEvent, HttpStatus.OK);
+
+
+
+    }
+
+    @GetMapping(value = "/event/image/{imageName}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public void viewImage(@PathVariable String imageName, HttpServletResponse response) throws IOException {
+
+        InputStream resource = this.fileService.getResource(imageName);
+        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        StreamUtils.copy(resource, response.getOutputStream());
+    }
+
+
 }

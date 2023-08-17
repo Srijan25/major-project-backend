@@ -18,6 +18,6 @@ public class Events {
     private String eventsTitle;
     private String eventsDescription;
     private Date eventsDate;
-    private String eventsPhoto;
+    private String eventImage;
 
 }
