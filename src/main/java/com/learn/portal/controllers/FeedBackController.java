@@ -1,5 +1,7 @@
 package com.learn.portal.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +36,10 @@ public class FeedBackController {
     @GetMapping("/all/{userId}")
     public ResponseEntity<?> getAllFeedBacksByUserId(@PathVariable Integer userId){
         return new ResponseEntity<>(this.feedBackService.getAllFeedBacksByUserId(userId), HttpStatus.OK);
+    }
+    
+    @GetMapping("/feedBack/{userId}")
+    public ResponseEntity<List<FeedBackDto>> getFeedBackByUserId(@PathVariable Integer userId){
+    	return new ResponseEntity<List<FeedBackDto>>(this.feedBackService.getAllFeedBacksByUserId(userId),HttpStatus.OK);
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -82,6 +83,12 @@ public class UserController {
     public ResponseEntity<List<UserDto>> viewAllUsers(){
         List<UserDto> userDtos = this.userService.getAllUsers();
         return new ResponseEntity<>(userDtos, HttpStatus.OK);
+    }
+    
+    @PutMapping("/user/feeStatusUpdate/{userId}/{status}")
+    public ResponseEntity<UserDto> feeStatusUpdate(@PathVariable Integer userId, @PathVariable Integer status){
+    	UserDto userDto = this.userService.feeStatusUpdate(userId, status);
+    	return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
     }
 
 }

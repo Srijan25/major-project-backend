@@ -6,9 +6,11 @@ import com.learn.portal.dto.SubjectDto;
 
 public interface SubjectService {
 
-	SubjectDto createSubject(SubjectDto subjectDto, Integer semester, Integer deptId);
+	SubjectDto createSubject(SubjectDto subjectDto, Integer semester, Integer deptId, Integer userId);
 	
 	List<SubjectDto> viewAllSubjects();
 	
 	List<SubjectDto> viewSubjectsByDeptAndSem(Integer semester, Integer deptId);
+
+	List<SubjectDto> viewSubjectsByTeacher(Integer userId);
 }

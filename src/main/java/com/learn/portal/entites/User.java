@@ -63,6 +63,9 @@ public class User implements UserDetails {
 
     @Column(name = "user_image", length = 50)
     private String userImage;
+    
+    @Column(name = "fee_status", length = 10)
+    private String feeStatus;
 
 
 //   @OneToMany(mappedBy = "user")

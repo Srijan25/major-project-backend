@@ -1,6 +1,7 @@
 package com.learn.portal.service.implementation;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,12 @@ public class FeedBackServiceImpl implements FeedBackService {
 
     @Override
     public List<FeedBackDto> getAllFeedBacksByUserId(Integer userId) {
-        return null;
+    	User feedBackFor = this.userRepository.findById(userId).orElseThrow();
+    	List<FeedBack> feedBacks = this.feedBackRepository.findByFeedBackFor(feedBackFor);
+    	List<FeedBackDto> feedBackDtos = feedBacks.stream()
+    			.map((feedBack)->this.modelMapper.map(feedBack, FeedBackDto.class))
+    			.collect(Collectors.toList());
+    	return feedBackDtos;
 
     }
 }

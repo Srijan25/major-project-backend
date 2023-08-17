@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import com.learn.portal.dto.SubjectDto;
 import com.learn.portal.entites.Dept;
 import com.learn.portal.entites.Subject;
+import com.learn.portal.entites.User;
 import com.learn.portal.repository.DeptRepository;
 import com.learn.portal.repository.SubjectRepository;
+import com.learn.portal.repository.UserRepository;
 import com.learn.portal.service.SubjectService;
 
 @Service
@@ -25,11 +27,16 @@ public class SubjectServiceImpl implements SubjectService{
 	private DeptRepository deptRepository;
 	
 	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
 	private ModelMapper modelMapper;
 	
 	@Override
-	public SubjectDto createSubject(SubjectDto subjectDto, Integer semester, Integer deptId) {
+	public SubjectDto createSubject(SubjectDto subjectDto, Integer semester, Integer deptId, Integer userId) {
 		Subject subject= this.modelMapper.map(subjectDto, Subject.class);
+		User teacher = this.userRepository.findById(userId).orElseThrow();
+		subject.setTeacher(teacher);
 		subject.setSemester(semester);
 		subject.setDept(this.deptRepository.findById(deptId).get());
 		Subject savedSubject = this.subjectRepository.save(subject);
@@ -49,6 +56,16 @@ public class SubjectServiceImpl implements SubjectService{
 	public List<SubjectDto> viewSubjectsByDeptAndSem(Integer semester, Integer deptId) {
 		Dept dept = this.deptRepository.findById(deptId).orElseThrow();
 		List<Subject> subjects = this.subjectRepository.findByDeptAndSemester(dept, semester);
+		List<SubjectDto> subjectDtos = subjects.stream()
+				.map((subject)->this.modelMapper.map(subject, SubjectDto.class))
+				.collect(Collectors.toList());
+		return subjectDtos;
+	}
+
+	@Override
+	public List<SubjectDto> viewSubjectsByTeacher(Integer userId) {
+		User teacher = this.userRepository.findById(userId).orElseThrow();
+		List<Subject> subjects = this.subjectRepository.findByTeacher(teacher);
 		List<SubjectDto> subjectDtos = subjects.stream()
 				.map((subject)->this.modelMapper.map(subject, SubjectDto.class))
 				.collect(Collectors.toList());

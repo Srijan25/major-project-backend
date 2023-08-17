@@ -16,5 +16,6 @@ public interface UserService {
     List<UserDto> getAllUsers();
 
     List<UserDto> getAllUsersByRole(String role);
+	UserDto feeStatusUpdate(Integer userId, Integer status);
 
 }

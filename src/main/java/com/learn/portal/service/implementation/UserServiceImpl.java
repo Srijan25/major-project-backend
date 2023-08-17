@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@Autowired
 	private FileService fileService;
 
@@ -49,10 +49,10 @@ public class UserServiceImpl implements UserService {
 		User savedUser = this.userRepository.save(user);
 		return this.modelMapper.map(savedUser, UserDto.class);
 	}
+
 	@Override
 	public UserDto updateUser(UserDto userDto, Integer userId) {
-		User user = this.userRepository.findById(userId)
-				.orElseThrow();
+		User user = this.userRepository.findById(userId).orElseThrow();
 
 		user.setName(userDto.getName());
 		user.setMobileNumber(userDto.getMobileNumber());
@@ -70,8 +70,6 @@ public class UserServiceImpl implements UserService {
 
 		return this.modelMapper.map(user, UserDto.class);
 	}
-
-
 
 	@Override
 	public ResponseEntity<?> loginUser(UserDto userDto) {
@@ -111,6 +109,18 @@ public class UserServiceImpl implements UserService {
 		User user = this.userRepository.findByEmailId(emailId)
 				.orElseThrow(() -> new RuntimeException("User not found with email id: " + emailId));
 		return this.modelMapper.map(user, UserDto.class);
+	}
+
+	@Override
+	public UserDto feeStatusUpdate(Integer userId, Integer status) {
+		User user = this.userRepository.findById(userId).orElseThrow();
+		if (status == 1) {
+			user.setFeeStatus("Paid");
+		} else if (status == 0) {
+			user.setFeeStatus("Due");
+		}
+		User savedUser = this.userRepository.save(user);
+		return this.modelMapper.map(savedUser, UserDto.class);
 	}
 
 }

@@ -36,5 +36,6 @@ public class UserDto {
     private List<SubjectDto> subjects;
     private DeptDto dept;
     private String userImage;
+    private String feeStatus;
     
 }
