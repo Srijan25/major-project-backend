@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,12 @@ public class UserController {
         UserDto createdUser = this.userService.createUser(userDto);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
 
+    }
+
+    @GetMapping("/usersByRole/{role}")
+    public ResponseEntity<List<UserDto>> getAllUsersByRole(@PathVariable String role){
+    	List<UserDto> userDtos = this.userService.getAllUsersByRole(role);
+    	return new ResponseEntity<List<UserDto>>(userDtos, HttpStatus.OK);
     }
 
     @PostMapping("/login")
@@ -71,5 +78,11 @@ public class UserController {
 		response.setContentType(MediaType.IMAGE_JPEG_VALUE);
 		StreamUtils.copy(resource, response.getOutputStream());
 	}
+
+    @GetMapping("/allUsers")
+    public ResponseEntity<List<UserDto>> viewAllUsers(){
+        List<UserDto> userDtos = this.userService.getAllUsers();
+        return new ResponseEntity<>(userDtos, HttpStatus.OK);
+    }
 
 }

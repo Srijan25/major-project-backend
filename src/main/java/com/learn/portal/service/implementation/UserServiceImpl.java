@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -69,6 +70,8 @@ public class UserServiceImpl implements UserService {
 		return this.modelMapper.map(user, UserDto.class);
 	}
 
+
+
 	@Override
 	public ResponseEntity<?> loginUser(UserDto userDto) {
 		try {
@@ -89,6 +92,18 @@ public class UserServiceImpl implements UserService {
 		} catch (AuthenticationException e) {
 			return ResponseEntity.badRequest().body("Invalid username/password supplied");
 		}
+	}
+
+	@Override
+	public List<UserDto> getAllUsers() {
+		List<User> users = this.userRepository.findAll();
+		return this.modelMapper.map(users, List.class);
+	}
+
+	@Override
+	public List<UserDto> getAllUsersByRole(String role) {
+		List<User> users = this.userRepository.findAllByRole(role);
+		return this.modelMapper.map(users, List.class);
 	}
 
 	private UserDto getUserByEmail(String emailId) {
