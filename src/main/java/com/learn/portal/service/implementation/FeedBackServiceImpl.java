@@ -38,8 +38,7 @@ public class FeedBackServiceImpl implements FeedBackService {
 
     @Override
     public List<FeedBackDto> getAllFeedBacksByUserId(Integer userId) {
-        List<FeedBack> feedBacks = this.feedBackRepository.findByUserId(userId);
-        return feedBacks.stream().map(feedBack -> this.modelMapper.map(feedBack, FeedBackDto.class)).toList();
+        return null;
 
     }
 }
