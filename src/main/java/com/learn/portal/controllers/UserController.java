@@ -1,12 +1,5 @@
 package com.learn.portal.controllers;
 
-import com.learn.portal.dto.UserDto;
-import com.learn.portal.service.FileService;
-import com.learn.portal.service.UserService;
-
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -24,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.learn.portal.dto.UserDto;
+import com.learn.portal.service.FileService;
+import com.learn.portal.service.UserService;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/users")

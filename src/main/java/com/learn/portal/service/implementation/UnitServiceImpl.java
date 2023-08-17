@@ -14,7 +14,6 @@ import com.learn.portal.entites.Unit;
 import com.learn.portal.repository.SubjectRepository;
 import com.learn.portal.repository.UnitRepository;
 import com.learn.portal.service.UnitService;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UnitServiceImpl implements UnitService {

@@ -1,17 +1,17 @@
 package com.learn.portal.service.implementation;
 
-import com.learn.portal.dto.DeptDto;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.learn.portal.dto.TeacherDto;
-import com.learn.portal.dto.UnitDto;
-import com.learn.portal.dto.UserDto;
-import com.learn.portal.entites.*;
+import com.learn.portal.entites.Dept;
+import com.learn.portal.entites.Teacher;
+import com.learn.portal.entites.User;
 import com.learn.portal.repository.DeptRepository;
 import com.learn.portal.repository.TeacherRepository;
 import com.learn.portal.repository.UserRepository;
 import com.learn.portal.service.TeacherService;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 

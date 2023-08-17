@@ -1,12 +1,9 @@
 package com.learn.portal.service.implementation;
 
-import com.learn.portal.dto.UserDto;
-import com.learn.portal.entites.User;
-import com.learn.portal.exception.EmailIdAlreadyExistsException;
-import com.learn.portal.jwt.JwtTokenProvider;
-import com.learn.portal.repository.UserRepository;
-import com.learn.portal.service.FileService;
-import com.learn.portal.service.UserService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +13,13 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.learn.portal.dto.UserDto;
+import com.learn.portal.entites.User;
+import com.learn.portal.exception.EmailIdAlreadyExistsException;
+import com.learn.portal.jwt.JwtTokenProvider;
+import com.learn.portal.repository.UserRepository;
+import com.learn.portal.service.FileService;
+import com.learn.portal.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

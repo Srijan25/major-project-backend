@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.learn.portal.dto.UnitDto;
-import com.learn.portal.dto.UserDto;
 import com.learn.portal.service.FileService;
 import com.learn.portal.service.UnitService;
 

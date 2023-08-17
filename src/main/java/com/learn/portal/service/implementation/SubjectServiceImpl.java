@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.learn.portal.dto.SubjectDto;
 import com.learn.portal.entites.Dept;
@@ -12,7 +13,6 @@ import com.learn.portal.entites.Subject;
 import com.learn.portal.repository.DeptRepository;
 import com.learn.portal.repository.SubjectRepository;
 import com.learn.portal.service.SubjectService;
-import org.springframework.stereotype.Service;
 
 @Service
 

@@ -1,11 +1,12 @@
 package com.learn.portal.service.implementation;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.learn.portal.dto.DeptDto;
 import com.learn.portal.entites.Dept;
 import com.learn.portal.repository.DeptRepository;
 import com.learn.portal.service.DeptService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class DeptServiceImpl implements DeptService {

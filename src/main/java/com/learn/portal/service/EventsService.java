@@ -1,8 +1,8 @@
 package com.learn.portal.service;
 
-import com.learn.portal.dto.EventsDto;
-
 import java.util.List;
+
+import com.learn.portal.dto.EventsDto;
 
 public interface EventsService {
     EventsDto createEvents(EventsDto eventsDto);

@@ -1,9 +1,10 @@
 package com.learn.portal.service;
 
-import com.learn.portal.dto.UserDto;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import com.learn.portal.dto.UserDto;
 
 public interface UserService {
 

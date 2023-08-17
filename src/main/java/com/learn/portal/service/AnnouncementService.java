@@ -1,9 +1,8 @@
 package com.learn.portal.service;
 
-import com.learn.portal.entites.Announcement;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.List;
+
+import com.learn.portal.entites.Announcement;
 
 public interface AnnouncementService {
 

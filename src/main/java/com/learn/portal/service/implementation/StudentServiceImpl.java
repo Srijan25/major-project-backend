@@ -1,15 +1,15 @@
 package com.learn.portal.service.implementation;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.learn.portal.dto.StudentDto;
 import com.learn.portal.entites.Student;
-import com.learn.portal.entites.Teacher;
 import com.learn.portal.repository.DeptRepository;
 import com.learn.portal.repository.StudentRepository;
 import com.learn.portal.repository.UserRepository;
 import com.learn.portal.service.StudentService;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class StudentServiceImpl implements StudentService {

@@ -1,7 +1,8 @@
 package com.learn.portal.jwt;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import lombok.Data;
 
 @ConfigurationProperties(prefix = "jwt")
 @Data
