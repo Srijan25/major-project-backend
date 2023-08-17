@@ -57,8 +57,8 @@ public class User implements UserDetails {
     private String userImage;
 
 
-   @OneToMany(mappedBy = "user")
-    private List<FeedBack> feedbacks;
+//   @OneToMany(mappedBy = "user")
+//    private List<FeedBack> feedbacks;
 
 
     @Override
