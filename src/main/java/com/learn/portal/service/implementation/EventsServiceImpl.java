@@ -21,13 +21,9 @@ public class EventsServiceImpl implements EventsService {
 
     @Override
     public EventsDto createEvents(EventsDto eventsDto) {
-        Events events = new Events();
-        events.setEventsTitle(eventsDto.getEventsTitle());
-        events.setEventsDescription(eventsDto.getEventsDescription());
-        events.setEventsDate(eventsDto.getEventsDate());
-        events.setEventImage(eventsDto.getEventImage());
-        eventsRepository.save(events);
-        return eventsDto;
+        Events events =  this.modelMapper.map(eventsDto, Events.class);
+        Events savedEvents = this.eventsRepository.save(events);
+        return this.modelMapper.map(savedEvents, EventsDto.class);
 
     }
 
