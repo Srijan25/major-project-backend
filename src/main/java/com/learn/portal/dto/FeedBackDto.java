@@ -10,15 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class FeedBackDto  {
-    private int feedBackId;
-private String subject;
-private String message;
-private String parameter1;
-private String parameter2;
-private String parameter3;
-private String parameter4;
-private String parameter5;
-private User user;
+public class FeedBackDto {
+	private int feedBackId;
+	private String subject;
+	private String message;
+	private String parameter1;
+	private String parameter2;
+	private String parameter3;
+	private String parameter4;
+	private String parameter5;
+	private UserDto user;
 
 }
