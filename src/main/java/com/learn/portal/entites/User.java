@@ -57,6 +57,10 @@ public class User implements UserDetails {
     private String userImage;
 
 
+   @OneToMany(mappedBy = "user")
+    private List<FeedBack> feedbacks;
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<String> roles = new ArrayList<>();
