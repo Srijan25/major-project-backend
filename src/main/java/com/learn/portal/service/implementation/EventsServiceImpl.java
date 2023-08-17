@@ -4,13 +4,19 @@ import com.learn.portal.dto.EventsDto;
 import com.learn.portal.entites.Events;
 import com.learn.portal.repository.EventsRepository;
 import com.learn.portal.service.EventsService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EventsServiceImpl implements EventsService {
     @Autowired
     private EventsRepository eventsRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
 
     @Override
@@ -26,14 +32,10 @@ public class EventsServiceImpl implements EventsService {
     }
 
     @Override
-    public EventsDto getEvents() {
-        Events events = eventsRepository.findAll().get(0);
+    public List<EventsDto> getEvents() {
         EventsDto eventsDto = new EventsDto();
-        eventsDto.setEventsTitle(events.getEventsTitle());
-        eventsDto.setEventsDescription(events.getEventsDescription());
-        eventsDto.setEventsDate(events.getEventsDate());
-        eventsDto.setEventImage(events.getEventImage());
-        return eventsDto;
+        List<Events> events = eventsRepository.findAll();
+        return this.modelMapper.map(events, List.class);
     }
 
     @Override

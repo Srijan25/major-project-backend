@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
@@ -28,9 +29,9 @@ public class EventsController {
     private FileService fileService;
 
     @GetMapping("/events")
-    public ResponseEntity<EventsDto> getEvents() {
-        EventsDto eventsDto = this.eventsService.getEvents();
-        return new ResponseEntity<>(eventsDto, HttpStatus.OK);
+    public ResponseEntity<List<EventsDto>> getEvents() {
+        List<EventsDto> eventsDtos = this.eventsService.getEvents();
+        return new ResponseEntity<>(eventsDtos, HttpStatus.OK);
     }
 
 
